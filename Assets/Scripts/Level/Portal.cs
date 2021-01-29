@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    Transform destination;
     public bool activated = false;
 
     private void OnTriggerEnter(Collider other)
