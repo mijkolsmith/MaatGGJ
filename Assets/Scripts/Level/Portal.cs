@@ -5,6 +5,7 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     public bool activated = false;
+    public Transform destination;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,8 +13,8 @@ public class Portal : MonoBehaviour
         {
             activated = true;
             //other.gameObject.transform.position = destination.position;
+            Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
         }
     }
-
     public bool IsActivated() => activated;
 }

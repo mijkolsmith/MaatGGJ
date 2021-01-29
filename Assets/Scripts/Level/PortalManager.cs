@@ -8,7 +8,7 @@ public class PortalManager : MonoBehaviour
     public GameObject[] lights;
     public Material onMaterial;
 
-    public Transform destination;
+    //public Transform destination;
     private int numActivated;
 
     private bool[] lightsOn;
@@ -19,11 +19,9 @@ public class PortalManager : MonoBehaviour
             if (!lightsOn[i] && value)
             {
                 // turn on light
+                lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
-
-                // player singleton
-                // bring player to destination
-
+                
 
                 numActivated++;
                 if (numActivated == portals.Length)
