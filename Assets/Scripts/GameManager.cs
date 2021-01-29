@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	ResourceManager rm;
+	public ResourceManager rm;
 
 	private void Awake()
     {
