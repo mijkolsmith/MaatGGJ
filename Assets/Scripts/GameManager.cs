@@ -35,6 +35,6 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-		
+		Debug.Log(rm.resources);
 	}
 }

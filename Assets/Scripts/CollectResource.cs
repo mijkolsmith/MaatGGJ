@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CollectResource : MonoBehaviour
 {
-	private void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider other)
 	{
-		if (collision.gameObject)
+		if (other.gameObject == Player.Instance.gameObject)
 		{
 			GameManager.Instance.rm.AddResource(1);
+			Destroy(gameObject);
 		}
 	}
 }
