@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	internal static GameManager instance = null;
+	private static GameManager instance = null;
+	public static GameManager Instance
+	{
+		get
+		{
+			if (instance == null)
+			{
+				instance = FindObjectOfType<GameManager>();
+			}
+			return instance;
+		}
+	}
+
+	ResourceManager rm;
 
 	private void Awake()
     {
@@ -15,8 +28,9 @@ public class GameManager : MonoBehaviour
 		else if (instance != this)
 		{
 			Destroy(gameObject);
-			return;
 		}
+
+		rm = new ResourceManager();
 	}
 
 	private void Update()
