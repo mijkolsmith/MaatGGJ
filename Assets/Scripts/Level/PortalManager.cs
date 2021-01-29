@@ -21,15 +21,13 @@ public class PortalManager : MonoBehaviour
                 // turn on light
                 lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
-                Debug.Log(Player.Instance);
-                // player singleton
-                // bring player to destination
-                Player.Instance.transform.position = destination.position;
+                Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
 
                 numActivated++;
                 if (numActivated == portals.Length)
                 {
                     // UnlockAscend();
+                    Debug.Log("all portals activated");
                 }
             }
         }

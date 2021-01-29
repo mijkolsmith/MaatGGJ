@@ -1804,7 +1804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239564687}
   m_LocalRotation: {x: -0, y: 0.71697336, z: -0, w: 0.69710064}
-  m_LocalPosition: {x: 5.41, y: 1.09, z: 0}
+  m_LocalPosition: {x: 7.8, y: 1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7517,6 +7517,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6816769747641219278, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8562068972153109969, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_Name
       value: Portal (2)
@@ -10720,7 +10724,7 @@ GameObject:
   - component: {fileID: 1664497596}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10833,9 +10837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfd465496e75f86448c170064be1c1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1664497595}
+  charCtrl: {fileID: 0}
   groundCheck: {fileID: 1392551068}
-  VCam: {fileID: 2403889}
+  vCam: {fileID: 2403889}
+  gravity: -20
   groundDistance: 1
   groundMask:
     serializedVersion: 2
@@ -14539,6 +14544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6816769747641219278, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8562068972153109969, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_Name
       value: Portal (1)
@@ -14831,7 +14840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9050340729416853355, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 149.16
+      value: 147.4
       objectReference: {fileID: 0}
     - target: {fileID: 9050340729416853355, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_LocalRotation.w
