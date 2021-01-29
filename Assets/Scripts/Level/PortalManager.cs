@@ -8,7 +8,7 @@ public class PortalManager : MonoBehaviour
     public GameObject[] lights;
     public Material onMaterial;
 
-    public Transform destination;
+    //public Transform destination;
     private int numActivated;
 
     private bool[] lightsOn;
@@ -21,13 +21,12 @@ public class PortalManager : MonoBehaviour
                 // turn on light
                 lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
-                Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
+                
 
                 numActivated++;
                 if (numActivated == portals.Length)
                 {
                     // UnlockAscend();
-                    Debug.Log("all portals activated");
                 }
             }
         }
@@ -48,7 +47,6 @@ public class PortalManager : MonoBehaviour
             if (portals[i].IsActivated())
             {
                 this[i] = true;
-
             }
         }
     }
