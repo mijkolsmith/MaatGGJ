@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MyCharacterController : MonoBehaviour
+public class Player : MonoBehaviour
 {
-	[SerializeField] private CharacterController player;
+	[SerializeField] private CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
-	[SerializeField] Camera VCam;
+	[SerializeField] Camera vCam;
 
 	float speed = 10.0f;
 	public float gravity = -20f;
@@ -22,11 +22,36 @@ public class MyCharacterController : MonoBehaviour
 	Vector3 velocity;
 	Vector3 move = Vector3.zero;
 
-	void Start()
+	private static Player instance;
+	public static Player Instance
+    {
+		get 
+		{ 
+			if (instance == null)
+            {
+				instance = FindObjectOfType<Player>();
+            }
+			return instance; 
+		}
+    }
+    private void Awake()
+    {
+		if (instance == null)
+        {
+			instance = this;
+		}
+
+		if (instance != this)
+        {
+			Destroy(gameObject);
+        }
+    }
+
+    void Start()
 	{
 		//hide the mouse
 		Cursor.lockState = CursorLockMode.Locked;
-		player = GetComponent<CharacterController>();
+		charCtrl = GetComponent<CharacterController>();
 	}
 
 	void Update()
@@ -34,7 +59,7 @@ public class MyCharacterController : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 
 		//make character model rotate with the camera
-		var rot = VCam.transform.rotation;
+		var rot = vCam.transform.rotation;
 		rot.x = 0;
 		rot.z = 0;
 		transform.rotation = rot;
@@ -68,7 +93,7 @@ public class MyCharacterController : MonoBehaviour
 		//movement
 		move = transform.right * x + transform.forward * z;
 		move.Normalize();
-		player.Move(move * speed * Time.deltaTime);
+		charCtrl.Move(move * speed * Time.deltaTime);
 
 		//gravity
 		if (Input.GetButtonDown("Jump") && isGrounded)
@@ -78,6 +103,6 @@ public class MyCharacterController : MonoBehaviour
 
 		velocity.y += gravity * Time.deltaTime;
 
-		player.Move(velocity * Time.deltaTime);
+		charCtrl.Move(velocity * Time.deltaTime);
 	}
 }

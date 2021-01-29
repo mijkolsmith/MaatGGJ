@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class PortalManager : MonoBehaviour
 {
     public Portal[] portals;
     public GameObject[] lights;
     public Material onMaterial;
 
+    public Transform destination;
     private int numActivated;
 
     private bool[] lightsOn;
@@ -19,6 +20,10 @@ public class LevelManager : MonoBehaviour
             {
                 // turn on light
                 lights[i].GetComponent<Renderer>().material = onMaterial;
+
+                // player singleton
+                // bring player to destination
+
 
                 numActivated++;
                 if (numActivated == portals.Length)
