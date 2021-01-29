@@ -8,6 +8,7 @@ public class MyCharacterController : MonoBehaviour
 {
 	[SerializeField] private CharacterController player;
 	[SerializeField] private Transform groundCheck;
+	[SerializeField] Camera VCam;
 
 	float speed = 10.0f;
 	float gravity = -20f;
@@ -32,6 +33,12 @@ public class MyCharacterController : MonoBehaviour
 	{
 		Cursor.lockState = CursorLockMode.Locked;
 
+		//make character model rotate with the camera
+		var rot = VCam.transform.rotation;
+		rot.x = 0;
+		rot.z = 0;
+		transform.rotation = rot;
+
 		//running
 		if (Input.GetButton("Fire3") == true)
 		{
@@ -55,8 +62,8 @@ public class MyCharacterController : MonoBehaviour
 			velocity.y = -2f;
 		}
 
-		float x = Input.GetAxis("Horizontal");
-		float z = Input.GetAxis("Vertical");
+		float x = Input.GetAxisRaw("Horizontal");
+		float z = Input.GetAxisRaw("Vertical");
 
 		//movement
 		move = transform.right * x + transform.forward * z;
