@@ -6,6 +6,7 @@ using TMPro;
 public class UpdateResourceText : MonoBehaviour
 {
 	private TextMeshProUGUI text;
+	public string amountNeeded;
 
 	private void Awake()
 	{
@@ -14,6 +15,6 @@ public class UpdateResourceText : MonoBehaviour
 
 	private void Update()
 	{
-		text.text = GameManager.Instance.rm.Resources.ToString();
+		text.text = GameManager.Instance.rm.Resources.ToString() + amountNeeded;
 	}
 }

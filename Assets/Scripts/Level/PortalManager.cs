@@ -21,9 +21,7 @@ public class PortalManager : MonoBehaviour
                 // turn on light
                 lights[i].GetComponent<Renderer>().material = onMaterial;
 
-                // player singleton
                 // bring player to destination
-
 
                 numActivated++;
                 if (numActivated == portals.Length)
@@ -43,10 +41,10 @@ public class PortalManager : MonoBehaviour
 
     private void Update()
     {
-        for(int i=0; i<portals.Length; i++)
+        for(int i = 0; i < portals.Length; i++)
         {
 
-            if (portals[i].IsActivated())
+            if (portals[i].IsUsed())
             {
                 this[i] = true;
             }

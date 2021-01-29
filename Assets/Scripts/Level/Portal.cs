@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public bool activated = false;
+    private bool used = false;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Player")
+        if(other.gameObject.tag == "Player")
         {
-            activated = true;
+            used = true;
             //other.gameObject.transform.position = destination.position;
         }
     }
 
-    public bool IsActivated() => activated;
+    public bool IsUsed() => used;
 }
