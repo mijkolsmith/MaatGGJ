@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class ResourceManager
 {
-	public int resources { get { return resources; } private set { } }
+	private int resources;
+	public int Resources { get => resources; private set => resources = value; }
 
 	public void AddResource(int amount)
 	{
-		resources += amount;
+		Resources += amount;
 	}
 
-	public void RemoveResource(int amount)
+	public bool RemoveResource(int amount)
 	{
-		resources -= amount;
+		if (Resources >= amount)
+		{
+			Resources -= amount;
+			return true;
+		}
+		return false;
 	}
 }

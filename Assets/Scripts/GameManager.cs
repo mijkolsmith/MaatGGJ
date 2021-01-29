@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public ResourceManager rm;
+	public Player player;
 
 	private void Awake()
     {
@@ -31,10 +33,11 @@ public class GameManager : MonoBehaviour
 		}
 
 		rm = new ResourceManager();
+		player = Player.Instance;
 	}
 
 	private void Update()
 	{
-		Debug.Log(rm.resources);
+		
 	}
 }

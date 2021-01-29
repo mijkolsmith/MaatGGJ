@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -56,6 +54,11 @@ public class Player : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			Interact();
+		}
+
 		Cursor.lockState = CursorLockMode.Locked;
 
 		//make character model rotate with the camera
@@ -67,7 +70,6 @@ public class Player : MonoBehaviour
 		//running
 		if (Input.GetButton("Fire3") == true)
 		{
-			Debug.Log("Running");
 			speed = 20f;
 		}
 		else
@@ -104,5 +106,18 @@ public class Player : MonoBehaviour
 		velocity.y += gravity * Time.deltaTime;
 
 		charCtrl.Move(velocity * Time.deltaTime);
+	}
+
+	private void Interact()
+	{
+		GameObject target = vCam.GetComponent<InteractionTarget>().target;
+		Debug.Log(target);
+		if (target.tag != null)
+		{
+			if (target.tag == "Interactable")
+			{
+				target.GetComponent<InvestResource>().Invest();
+			}
+		}
 	}
 }
