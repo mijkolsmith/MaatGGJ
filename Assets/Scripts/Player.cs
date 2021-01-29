@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
 	[SerializeField] private CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
-	[SerializeField] Camera VCam;
+	[SerializeField] Camera vCam;
 
 	float speed = 10.0f;
 	public float gravity = -20f;
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 
 		//make character model rotate with the camera
-		var rot = VCam.transform.rotation;
+		var rot = vCam.transform.rotation;
 		rot.x = 0;
 		rot.z = 0;
 		transform.rotation = rot;
