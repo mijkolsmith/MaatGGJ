@@ -1815,6 +1815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1664497595}
   groundCheck: {fileID: 1392551068}
+  VCam: {fileID: 2403889}
   groundDistance: 1
   groundMask:
     serializedVersion: 2
