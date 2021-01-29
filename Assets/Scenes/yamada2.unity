@@ -7517,6 +7517,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 619501247006532506, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 239564688}
     - target: {fileID: 6816769747641219278, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -10341,7 +10345,6 @@ MonoBehaviour:
   - {fileID: 1999331542}
   - {fileID: 1491109300}
   onMaterial: {fileID: 2100000, guid: 6fd206b8e60917d4993e70a0f3e6c049, type: 2}
-  destination: {fileID: 239564688}
 --- !u!4 &1545765751
 Transform:
   m_ObjectHideFlags: 0
@@ -14544,6 +14547,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 619501247006532506, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 239564688}
     - target: {fileID: 6816769747641219278, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -14822,6 +14829,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 619501247006532506, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+      propertyPath: destination
+      value: 
+      objectReference: {fileID: 239564688}
     - target: {fileID: 8562068972153109969, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_Name
       value: Portal
