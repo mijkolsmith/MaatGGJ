@@ -11,7 +11,7 @@ public class MyCharacterController : MonoBehaviour
 	[SerializeField] Camera VCam;
 
 	float speed = 10.0f;
-	float gravity = -20f;
+	public float gravity = -20f;
 	
 	public float groundDistance = .4f;
 	public LayerMask groundMask;
