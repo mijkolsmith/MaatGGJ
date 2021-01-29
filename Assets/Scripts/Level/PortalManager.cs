@@ -19,11 +19,12 @@ public class PortalManager : MonoBehaviour
             if (!lightsOn[i] && value)
             {
                 // turn on light
+                lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
-
+                Debug.Log(Player.Instance);
                 // player singleton
                 // bring player to destination
-
+                Player.Instance.transform.position = destination.position;
 
                 numActivated++;
                 if (numActivated == portals.Length)
@@ -49,6 +50,7 @@ public class PortalManager : MonoBehaviour
             if (portals[i].IsActivated())
             {
                 this[i] = true;
+
             }
         }
     }

@@ -14,6 +14,5 @@ public class Portal : MonoBehaviour
             //other.gameObject.transform.position = destination.position;
         }
     }
-
     public bool IsActivated() => activated;
 }
