@@ -5,13 +5,14 @@ using UnityEngine;
 public class Portal : MonoBehaviour
 {
     private bool used = false;
+    public Transform destination;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             used = true;
-            //other.gameObject.transform.position = destination.position;
+            Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
         }
     }
 
