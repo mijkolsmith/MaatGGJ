@@ -14,8 +14,8 @@ public class LiftBehaviour : MonoBehaviour
 
 	private void Start()
 	{
-		EventManager.AddListener(EventType.UNLOCKLIFT, OpenLift);
-		EventManager.AddListener(EventType.UNLOCKNEXTLEVEL, RaiseLift);
+		EventManager.AddListener(EventType.UNLOCK_LIFT, OpenLift);
+		EventManager.AddListener(EventType.UNLOCK_NEXT_LEVEL, RaiseLift);
 	}
 
 	private void Update()
