@@ -22,13 +22,11 @@ public class PortalManager : MonoBehaviour
                 lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
 
-				//bring player to destination
-
                 numActivated++;
                 if (numActivated == portals.Length)
                 {
-                    // UnlockAscend();
-                }
+					EventManager.RaiseEvent(EventType.UNLOCKNEXTLEVEL);
+				}
             }
         }
     }
@@ -43,7 +41,6 @@ public class PortalManager : MonoBehaviour
     {
         for(int i = 0; i < portals.Length; i++)
         {
-
             if (portals[i].IsUsed())
             {
                 this[i] = true;

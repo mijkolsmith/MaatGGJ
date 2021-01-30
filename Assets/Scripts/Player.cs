@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	[SerializeField] private CharacterController charCtrl;
+	[SerializeField] public CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
 	[SerializeField] Camera vCam;
 
@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
 			return instance; 
 		}
     }
+
     private void Awake()
     {
 		if (instance == null)
@@ -111,8 +112,7 @@ public class Player : MonoBehaviour
 	private void Interact()
 	{
 		GameObject target = vCam.GetComponent<InteractionTarget>().target;
-		Debug.Log(target);
-		if (target.tag != null)
+		if (target != null)
 		{
 			if (target.tag == "Interactable")
 			{

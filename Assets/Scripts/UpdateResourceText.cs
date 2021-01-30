@@ -6,7 +6,7 @@ using TMPro;
 public class UpdateResourceText : MonoBehaviour
 {
 	private TextMeshProUGUI text;
-	public string amountNeeded;
+	[SerializeField] private InvestResource invest;
 
 	private void Awake()
 	{
@@ -15,6 +15,6 @@ public class UpdateResourceText : MonoBehaviour
 
 	private void Update()
 	{
-		text.text = GameManager.Instance.rm.Resources.ToString() + amountNeeded;
+		text.text = GameManager.Instance.rm.Resources.ToString() + " / " + invest.Cost;
 	}
 }
