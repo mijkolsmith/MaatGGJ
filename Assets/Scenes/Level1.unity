@@ -940,7 +940,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 20, z: 1000}
+  m_Size: {x: 10, y: 40, z: 1000}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &72539843
 GameObject:
@@ -12472,7 +12472,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1000, y: 20, z: 1}
+  m_Size: {x: 1000, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &855951290
 GameObject:
@@ -24047,7 +24047,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1000, y: 20, z: 1}
+  m_Size: {x: 1000, y: 40, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1664353094
 GameObject:
@@ -24262,6 +24262,7 @@ MonoBehaviour:
   charCtrl: {fileID: 1664497595}
   groundCheck: {fileID: 1392551068}
   vCam: {fileID: 2403889}
+  moveSpeed: 10
   gravity: -25
   groundDistance: 1
   groundMask:
@@ -26402,7 +26403,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 20, z: 1000}
+  m_Size: {x: 10, y: 40, z: 1000}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1801983859
 GameObject:
