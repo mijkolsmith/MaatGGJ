@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : PortalTraveller
 {
 	[SerializeField] public CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
