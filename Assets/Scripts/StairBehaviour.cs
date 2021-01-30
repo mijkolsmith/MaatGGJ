@@ -14,8 +14,8 @@ public class StairBehaviour : MonoBehaviour
 
 	private void Start()
     {
-		EventManager.AddListener(EventType.UNLOCKSTAIRNORTH, GrowStairNorth);
-		EventManager.AddListener(EventType.UNLOCKSTAIRWEST, GrowStairWest);
+		EventManager.AddListener(EventType.UNLOCK_STAIR_NORTH, GrowStairNorth);
+		EventManager.AddListener(EventType.UNLOCK_STAIR_WEST, GrowStairWest);
 	}
 
 	private void Update()
