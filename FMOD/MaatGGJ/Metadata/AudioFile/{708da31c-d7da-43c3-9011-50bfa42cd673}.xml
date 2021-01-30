@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{708da31c-d7da-43c3-9011-50bfa42cd673}">
+		<property name="assetPath">
+			<value>pickup pling-001.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7428571428571429</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d7ed58d2-d3ce-4d50-a8d6-72e5c2ecc316}</destination>
+		</relationship>
+	</object>
+</objects>
