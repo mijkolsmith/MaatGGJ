@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public bool activated = false;
+    private bool used = false;
     public Transform destination;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag=="Player")
+        if(other.gameObject.tag == "Player")
         {
-            activated = true;
-            //other.gameObject.transform.position = destination.position;
+            used = true;
             Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
         }
     }
-    public bool IsActivated() => activated;
+
+    public bool IsUsed() => used;
 }

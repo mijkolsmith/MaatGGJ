@@ -21,17 +21,15 @@ public class PortalManager : MonoBehaviour
                 // turn on light
                 lightsOn[i] = value;
                 lights[i].GetComponent<Renderer>().material = onMaterial;
-                
 
                 numActivated++;
                 if (numActivated == portals.Length)
                 {
-                    // UnlockAscend();
-                }
+					EventManager.RaiseEvent(EventType.UNLOCKNEXTLEVEL);
+				}
             }
         }
     }
-
 
     private void Awake()
     {
@@ -41,10 +39,9 @@ public class PortalManager : MonoBehaviour
 
     private void Update()
     {
-        for(int i=0; i<portals.Length; i++)
+        for(int i = 0; i < portals.Length; i++)
         {
-
-            if (portals[i].IsActivated())
+            if (portals[i].IsUsed())
             {
                 this[i] = true;
             }
