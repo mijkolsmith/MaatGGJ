@@ -6,9 +6,10 @@ public class Player : MonoBehaviour
 {
 	[SerializeField] public CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
-	[SerializeField] Camera vCam;
+	[SerializeField] private Camera vCam;
 
-	float speed = 10.0f;
+	[SerializeField] private float moveSpeed = 10.0f;
+	private float speed = 10.0f;
 	public float gravity = -20f;
 	
 	public float groundDistance = .4f;
@@ -74,11 +75,11 @@ public class Player : MonoBehaviour
 		//running
 		if (Input.GetButton("Fire3") == true)
 		{
-			speed = 20f;
+			speed = moveSpeed * 2;
 		}
 		else
 		{
-			speed = 10f;
+			speed = moveSpeed;
 		}
 
 		//ground check

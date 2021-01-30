@@ -9,7 +9,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject == Player.Instance.gameObject)
         {
             used = true;
             Player.Instance.transform.SetPositionAndRotation(destination.position, destination.rotation);
