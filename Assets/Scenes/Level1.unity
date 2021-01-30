@@ -8041,6 +8041,7 @@ MonoBehaviour:
   portals:
   - {fileID: 2102580139}
   - {fileID: 121391460}
+  - {fileID: 1953519675}
   lights:
   - {fileID: 6245721451156772532}
   - {fileID: 1015131765}
@@ -17274,7 +17275,7 @@ PrefabInstance:
       objectReference: {fileID: 424421663}
     - target: {fileID: 8562068972153109969, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_Name
-      value: Portal2 (1)
+      value: Portal3
       objectReference: {fileID: 0}
     - target: {fileID: 9050340729416853355, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
       propertyPath: m_RootOrder
@@ -28624,6 +28625,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940361240}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1953519675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 619501247006532506, guid: 727948f95e9b3f2459b5a602b59edb6d, type: 3}
+  m_PrefabInstance: {fileID: 1213357300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3759577a993ff744b844f660d61c7a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1955452954
 GameObject:
   m_ObjectHideFlags: 0

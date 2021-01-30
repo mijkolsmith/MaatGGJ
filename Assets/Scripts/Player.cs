@@ -14,11 +14,14 @@ public class Player : MonoBehaviour
 	public float groundDistance = .4f;
 	public LayerMask groundMask;
 	private bool isGrounded;
+	private bool wasGrounded;
 
 	public float jumpHeight = 2.0f;
 
 	Vector3 velocity;
 	Vector3 move = Vector3.zero;
+
+	float gracePeriod = 0.1f;
 
 	private static Player instance;
 	public static Player Instance
@@ -79,10 +82,27 @@ public class Player : MonoBehaviour
 		}
 
 		//ground check
-		isGrounded = (Physics.CheckBox(new Vector3(groundCheck.position.x - 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.1f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z - 1f), new Vector3(groundDistance, 0.1f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x + 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.1f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z + 1f), new Vector3(groundDistance, 0.1f, groundDistance), Quaternion.identity, groundMask));
+		isGrounded = (Physics.CheckBox(new Vector3(groundCheck.position.x - 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z - 1f), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x + 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z + 1f), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask));
+
+		if (isGrounded == false)
+		{
+			if (gracePeriod > 0)
+			{
+				gracePeriod -= Time.deltaTime;
+			}
+			else
+			{
+				wasGrounded = false;
+			}
+		}
+		else if (isGrounded == true)
+		{
+			wasGrounded = true;
+			gracePeriod = 0.1f;
+		}
 
 		//reset gravity if grounded
 		if (isGrounded && velocity.y < 0)
@@ -99,7 +119,7 @@ public class Player : MonoBehaviour
 		charCtrl.Move(move * speed * Time.deltaTime);
 
 		//gravity
-		if (Input.GetButtonDown("Jump") && isGrounded)
+		if (Input.GetButtonDown("Jump") && (isGrounded || wasGrounded))
 		{
 			velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
 		}
