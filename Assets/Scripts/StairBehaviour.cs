@@ -42,12 +42,14 @@ public class StairBehaviour : MonoBehaviour
 	private void GrowStairNorth()
     {
 		north = true;
+		west = false;
 		transform.GetChild(1).gameObject.SetActive(true);
     }
 
 	private void GrowStairWest()
 	{
 		west = true;
+		north = false;
 		transform.GetChild(1).gameObject.SetActive(true);
 	}
 }
