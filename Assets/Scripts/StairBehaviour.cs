@@ -37,35 +37,38 @@ public class StairBehaviour : MonoBehaviour
 
 	private void Update()
 	{
-		if (transform.rotation.y <= NorthRotation.y && north == true)
+		if (transform.parent != null)
 		{
-			transform.RotateAround(transform.parent.position, Vector3.up, step * Time.deltaTime);
-			AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-			IsRotating = true;
-		}
-		else if (transform.rotation.y >= NorthRotation.y && north == true)
-		{
-			north = false;
-			IsRotating = false;
-			if (startRotation!=NorthRotation)
-            {
-				AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
-            }
-		}
-
-		if (transform.rotation.y >= WestRotation.y && west == true)
-		{
-			transform.RotateAround(transform.parent.position, Vector3.up, -step * Time.deltaTime);
-			AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-			IsRotating = true;
-		}
-		else if (transform.rotation.y <= WestRotation.y && west == true)
-		{
-			west = false;
-			IsRotating = false;
-			if (startRotation != NorthRotation)
+			if (transform.rotation.y <= NorthRotation.y && north == true)
 			{
-				AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
+				transform.RotateAround(transform.parent.position, Vector3.up, step * Time.deltaTime);
+				AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+				IsRotating = true;
+			}
+			else if (transform.rotation.y >= NorthRotation.y && north == true)
+			{
+				north = false;
+				IsRotating = false;
+				if (startRotation != NorthRotation)
+				{
+					AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
+				}
+			}
+
+			if (transform.rotation.y >= WestRotation.y && west == true)
+			{
+				transform.RotateAround(transform.parent.position, Vector3.up, -step * Time.deltaTime);
+				AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+				IsRotating = true;
+			}
+			else if (transform.rotation.y <= WestRotation.y && west == true)
+			{
+				west = false;
+				IsRotating = false;
+				if (startRotation != NorthRotation)
+				{
+					AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
+				}
 			}
 		}
 	}
