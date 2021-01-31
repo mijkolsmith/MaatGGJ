@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9170739405257133239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/SFXVolumeSlider
+  m_EditorClassIdentifier: 
+  Name: SFXVolumeSlider
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 3337596417
+    data2: 262581029
+  Exists: 1
 --- !u!114 &-7567601761632080229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23,6 +43,26 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 30
   Length: 0
+--- !u!114 &-7344763122155713290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Stairs Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-5834893520338808264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,13 +122,14 @@ MonoBehaviour:
   m_Name: event:/Explore Music
   m_EditorClassIdentifier: 
   Path: event:/Explore Music
-  guid: 9f11025271a0934193ec99148905716b
+  guid: 09b89cc3f13bf441b9ecdd12946df888
   Banks:
   - {fileID: 3350897891553344498}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
-  Parameters: []
+  Parameters:
+  - {fileID: -2372647053907893233}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -160,6 +201,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-4087754329450315777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/MusicVolumeSlider
+  m_EditorClassIdentifier: 
+  Name: MusicVolumeSlider
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 2152571517
+    data2: 226571647
+  Exists: 1
+--- !u!114 &-3500466687171013452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &-2721957897899980847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +264,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2372647053907893233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 1
 --- !u!114 &-809117061018836516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/Empty Music
   guid: 09b89cc3f13bf441b9ecdd12946df888
-  Banks:
-  - {fileID: 3350897891553344498}
+  Banks: []
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -206,6 +306,46 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 0
+--- !u!114 &-279245064451631276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 1
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
+--- !u!114 &-213557191470096163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,15 +372,15 @@ MonoBehaviour:
   - {fileID: -5356499566412762475}
   - {fileID: 4958542812368761981}
   - {fileID: -2721957897899980847}
-  - {fileID: -809117061018836516}
+  - {fileID: 6206853659285719583}
   EditorParameters:
-  - {fileID: 1072834275777277657}
-  - {fileID: 1742833799408086915}
+  - {fileID: -4087754329450315777}
+  - {fileID: -9170739405257133239}
   MasterBanks:
   - {fileID: 3350897891553344498}
   StringsBanks:
   - {fileID: 5738295874022298150}
-  stringsBankWriteTime: 637476442174310432
+  stringsBankWriteTime: 637476555995008617
   cacheVersion: 6
 --- !u!114 &24023871980391220
 MonoBehaviour:
@@ -280,11 +420,11 @@ MonoBehaviour:
   Name: MusicVolumeSlider
   Min: 0
   Max: 1
-  Default: 0
+  Default: 1
   ID:
     data1: 2152571517
     data2: 226571647
-  Exists: 1
+  Exists: 0
 --- !u!114 &1742833799408086915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +444,7 @@ MonoBehaviour:
   ID:
     data1: 3337596417
     data2: 262581029
-  Exists: 1
+  Exists: 0
 --- !u!114 &3350897891553344498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,10 +460,30 @@ MonoBehaviour:
   Path: FMOD/MaatGGJ/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637476442174244952
+  lastModified: 637476555994563200
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &3638970976740355674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &4958542812368761981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +507,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &5625997190803232391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Stairs Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0
 --- !u!114 &5738295874022298150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,11 +542,11 @@ MonoBehaviour:
   Path: FMOD/MaatGGJ/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637476442174310432
+  lastModified: 637476555995008617
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1402
+    Value: 1438
   Exists: 1
 --- !u!114 &5833250074310440019
 MonoBehaviour:
@@ -391,3 +571,69 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 236512
+--- !u!114 &6206853659285719583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Stairs Music
+  m_EditorClassIdentifier: 
+  Path: event:/Stairs Music
+  guid: 9f11025271a0934193ec99148905716b
+  Banks:
+  - {fileID: 3350897891553344498}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &7635665186436697580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Stairs Music
+  m_EditorClassIdentifier: 
+  Path: event:/Stairs Music
+  guid: 9f11025271a0934193ec99148905716b
+  Banks:
+  - {fileID: 3350897891553344498}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
+--- !u!114 &7957925528286169796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Explore Music/VolumeFade
+  m_EditorClassIdentifier: 
+  Name: VolumeFade
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 0
+    data2: 0
+  Exists: 0

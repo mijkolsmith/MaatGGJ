@@ -138,6 +138,8 @@ public class Player : PortalTraveller
 			if (target.tag == "Interactable")
 			{
 				target.GetComponent<InvestResource>().Invest();
+				AudioManager.Instance.interactSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(target.gameObject));
+				AudioManager.Instance.PlayAudio(AudioType.SFX_INTERACT);
 			}
 		}
 	}

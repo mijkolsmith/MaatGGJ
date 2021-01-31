@@ -13,13 +13,21 @@ public class AudioManager : MonoBehaviour
     [FMODUnity.EventRef] public string ascendMusicRef = "";
     [FMODUnity.EventRef] public string unlockMusicRef = "";
 
+    [Header("SFX")]
+    [FMODUnity.EventRef] public string stairsTurningSFXRef = "";
+    [FMODUnity.EventRef] public string interactSFXRef = "";
+    [FMODUnity.EventRef] public string pickupSFXRef = "";
+
     private EventInstance explorationMusic;
     private EventInstance stairsMusic;
     private EventInstance ascendMusic;
     private EventInstance unlockMusic;
 
-    private Dictionary<AudioType, EventInstance> musicEvents;
-    private Dictionary<AudioType, EventInstance> sfxEvents;
+    [HideInInspector] public EventInstance stairsTurningSFX;
+    [HideInInspector] public EventInstance interactSFX;
+    [HideInInspector] public EventInstance pickupSFX;
+
+    private Dictionary<AudioType, EventInstance> audioEvents;
     #endregion
 
     bool coroutineRunning = false;
@@ -68,12 +76,19 @@ public class AudioManager : MonoBehaviour
         ascendMusic = FMODUnity.RuntimeManager.CreateInstance(ascendMusicRef);
         unlockMusic = FMODUnity.RuntimeManager.CreateInstance(unlockMusicRef);
 
-        musicEvents = new Dictionary<AudioType, EventInstance>()
+        stairsTurningSFX = FMODUnity.RuntimeManager.CreateInstance(stairsTurningSFXRef);
+        interactSFX = FMODUnity.RuntimeManager.CreateInstance(interactSFXRef);
+        pickupSFX = FMODUnity.RuntimeManager.CreateInstance(pickupSFXRef);
+
+        audioEvents = new Dictionary<AudioType, EventInstance>()
         {
             {AudioType.MUSIC_EXPLORE, explorationMusic },
             {AudioType.MUSIC_STAIRS, stairsMusic },
             {AudioType.MUSIC_ASCEND, ascendMusic },
-            {AudioType.MUSIC_UNLOCK, unlockMusic }
+            {AudioType.MUSIC_UNLOCK, unlockMusic },
+            {AudioType.SFX_STAIRS_TURN, stairsTurningSFX },
+            {AudioType.SFX_PICKUP, pickupSFX },
+            {AudioType.SFX_INTERACT, interactSFX }
         };
 
         //PlayMusic(AudioType.MUSIC_EXPLORE);
@@ -81,12 +96,12 @@ public class AudioManager : MonoBehaviour
 
         
         FMOD.Studio.EventDescription fadeEventDescription;
-        musicEvents[AudioType.MUSIC_EXPLORE].getDescription(out fadeEventDescription);
+        audioEvents[AudioType.MUSIC_EXPLORE].getDescription(out fadeEventDescription);
         FMOD.Studio.PARAMETER_DESCRIPTION fadeParameterDescription;
         fadeEventDescription.getParameterDescriptionByName("VolumeFade", out fadeParameterDescription);
         fadeParameterId = fadeParameterDescription.id;
         float currentFadeValue;
-        musicEvents[AudioType.MUSIC_EXPLORE].getParameterByID(fadeParameterId, out currentFadeValue);
+        audioEvents[AudioType.MUSIC_EXPLORE].getParameterByID(fadeParameterId, out currentFadeValue);
 
 
         //StartFade(AudioType.MUSIC_STAIRS, true);
@@ -96,7 +111,7 @@ public class AudioManager : MonoBehaviour
     {
         if (bankLoaded)
         {
-            musicEvents[AudioType.MUSIC_EXPLORE].setParameterByID(fadeParameterId, faderLevel);
+            audioEvents[AudioType.MUSIC_EXPLORE].setParameterByID(fadeParameterId, faderLevel);
         }
     }
 
@@ -112,7 +127,7 @@ public class AudioManager : MonoBehaviour
         {
             if (_in)
             {
-                PlayMusic(_track);
+                PlayAudio(_track);
             }
             return;
         }
@@ -133,30 +148,30 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(coroutine);
     }
 
-    public void PlayMusic(AudioType _track)
+    public void PlayAudio(AudioType _track)
     {
         if (!IsPlaying(_track))
         {
-            musicEvents[_track].start();
+            audioEvents[_track].start();
         }
     }
 
-    public void StopMusic(AudioType _track)
+    public void StopAudio(AudioType _track)
     {
         if (IsPlaying(_track))
         {
-            musicEvents[_track].stop(STOP_MODE.ALLOWFADEOUT);
+            audioEvents[_track].stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 
     private bool IsPlaying(AudioType _track)
     {
         PLAYBACK_STATE playbackState;
-        musicEvents[_track].getPlaybackState(out playbackState);
+        audioEvents[_track].getPlaybackState(out playbackState);
 
         if (playbackState == PLAYBACK_STATE.PLAYING)
         {
-            Debug.Log("selected music already playing");
+            Debug.Log("selected audio already playing");
             return true;
         }
         return false;
@@ -172,11 +187,11 @@ public class AudioManager : MonoBehaviour
         coroutineRunning = true;
 
         PLAYBACK_STATE playbackState;
-        musicEvents[_track].getPlaybackState(out playbackState);
+        audioEvents[_track].getPlaybackState(out playbackState);
 
         if (playbackState == PLAYBACK_STATE.STOPPED)
         {
-            Debug.Log("selected music not playing");
+            Debug.Log("selected audio not playing");
             yield break;
         }
 

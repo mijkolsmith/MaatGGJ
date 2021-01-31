@@ -10,7 +10,24 @@ public class StairBehaviour : MonoBehaviour
 	private bool north = false;
 	private bool west = false;
 
-	private float step = 10;
+	Quaternion startRotation;
+
+	private float step = 14.2f;
+
+	private bool isRotating = false;
+	private bool IsRotating
+    {
+        set 
+		{ 
+			if (!isRotating && value)
+            {
+				
+				AudioManager.Instance.PlayAudio(AudioType.SFX_STAIRS_TURN);
+            }
+
+			isRotating = value;
+		}
+    }
 
 	private void Start()
     {
@@ -23,24 +40,42 @@ public class StairBehaviour : MonoBehaviour
 		if (transform.rotation.y <= NorthRotation.y && north == true)
 		{
 			transform.RotateAround(transform.parent.position, Vector3.up, step * Time.deltaTime);
+			AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+			IsRotating = true;
 		}
 		else if (transform.rotation.y >= NorthRotation.y && north == true)
 		{
 			north = false;
+			IsRotating = false;
+			if (startRotation!=NorthRotation)
+            {
+				AudioManager.Instance.StopAudio(AudioType.SFX_STAIRS_TURN);
+            }
 		}
 
 		if (transform.rotation.y >= WestRotation.y && west == true)
 		{
 			transform.RotateAround(transform.parent.position, Vector3.up, -step * Time.deltaTime);
+			AudioManager.Instance.stairsTurningSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
+			IsRotating = true;
 		}
 		else if (transform.rotation.y <= WestRotation.y && west == true)
 		{
 			west = false;
+			IsRotating = false;
+			if (startRotation != NorthRotation)
+			{
+				AudioManager.Instance.StopAudio(AudioType.SFX_STAIRS_TURN);
+			}
 		}
 	}
 
 	private void GrowStairNorth()
     {
+		if (transform.rotation.y >= NorthRotation.y)
+		{
+			startRotation = WestRotation;
+		}
 		north = true;
 		west = false;
 		transform.GetChild(1).gameObject.SetActive(true);
@@ -48,6 +83,11 @@ public class StairBehaviour : MonoBehaviour
 
 	private void GrowStairWest()
 	{
+		if (transform.rotation.y >= WestRotation.y)
+        {
+			startRotation = NorthRotation;
+		}
+		
 		west = true;
 		north = false;
 		transform.GetChild(1).gameObject.SetActive(true);
