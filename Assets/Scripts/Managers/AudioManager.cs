@@ -27,12 +27,14 @@ public class AudioManager : MonoBehaviour
     [HideInInspector] public EventInstance interactSFX;
     [HideInInspector] public EventInstance pickupSFX;
 
-    private Dictionary<AudioType, EventInstance> audioEvents;
+    private Dictionary<AudioType, EventInstance> musicEvents;
+    private Dictionary<AudioType, EventInstance> sfxEvents;
     #endregion
 
     bool coroutineRunning = false;
     bool inOrOut;
     bool musicIsPlaying = false;
+    bool stairsPlayed = false;
     bool exploreIsPlaying = false;
     IEnumerator coroutine;
 
@@ -82,12 +84,16 @@ public class AudioManager : MonoBehaviour
         interactSFX = FMODUnity.RuntimeManager.CreateInstance(interactSFXRef);
         pickupSFX = FMODUnity.RuntimeManager.CreateInstance(pickupSFXRef);
 
-        audioEvents = new Dictionary<AudioType, EventInstance>()
+        musicEvents = new Dictionary<AudioType, EventInstance>()
         {
             {AudioType.MUSIC_EXPLORE, explorationMusic },
             {AudioType.MUSIC_STAIRS, stairsMusic },
             {AudioType.MUSIC_ASCEND, ascendMusic },
-            {AudioType.MUSIC_UNLOCK, unlockMusic },
+            {AudioType.MUSIC_UNLOCK, unlockMusic }
+        };
+
+        sfxEvents = new Dictionary<AudioType, EventInstance>()
+        {
             {AudioType.SFX_STAIRS_TURN, stairsTurningSFX },
             {AudioType.SFX_PICKUP, pickupSFX },
             {AudioType.SFX_INTERACT, interactSFX }
@@ -96,42 +102,23 @@ public class AudioManager : MonoBehaviour
         //PlayMusic(AudioType.MUSIC_EXPLORE);
 
 
-        
+
         FMOD.Studio.EventDescription fadeEventDescription;
-        audioEvents[AudioType.MUSIC_EXPLORE].getDescription(out fadeEventDescription);
+        musicEvents[AudioType.MUSIC_EXPLORE].getDescription(out fadeEventDescription);
         FMOD.Studio.PARAMETER_DESCRIPTION fadeParameterDescription;
         fadeEventDescription.getParameterDescriptionByName("VolumeFade", out fadeParameterDescription);
         fadeParameterId = fadeParameterDescription.id;
         float currentFadeValue;
-        audioEvents[AudioType.MUSIC_EXPLORE].getParameterByID(fadeParameterId, out currentFadeValue);
+        musicEvents[AudioType.MUSIC_EXPLORE].getParameterByID(fadeParameterId, out currentFadeValue);
 
-
-        //StartFade(AudioType.MUSIC_STAIRS, true);
     }
 
     private void Update()
     {
         if (bankLoaded)
         {
-            Debug.Log(faderLevel);
-            if (IsPlaying(AudioType.MUSIC_ASCEND) || IsPlaying(AudioType.MUSIC_STAIRS))
-            {
-                musicIsPlaying = true;
-            }
-            else
-            {
-                musicIsPlaying = false;
-            }
+            musicEvents[AudioType.MUSIC_EXPLORE].setParameterByID(fadeParameterId, faderLevel);
 
-            if (IsPlaying(AudioType.MUSIC_EXPLORE) && faderLevel > 0f)
-            {
-                exploreIsPlaying = true;
-            }
-            else
-            {
-                exploreIsPlaying = false;
-            }
-            audioEvents[AudioType.MUSIC_EXPLORE].setParameterByID(fadeParameterId, faderLevel);
         }
     }
 
@@ -142,62 +129,100 @@ public class AudioManager : MonoBehaviour
         {
             if (_in)
             {
-                PlayAudio(_track);
+                PlayMusic(_track);
             }
             return;
         }
 
-        if (_in != inOrOut && coroutine!=null)
+        
+
+        coroutine = FadeMusic(_track, _in);
+
+        if ((IsPlaying(AudioType.MUSIC_ASCEND) || IsPlaying(AudioType.MUSIC_STAIRS)) && _in)
+        {
+            Debug.Log("here!");
+            if(coroutineRunning)
+            {
+                StopCoroutine(coroutine);
+                coroutineRunning = false;
+            }
+            coroutine = FadeMusic(AudioType.MUSIC_EXPLORE, false);
+            StartCoroutine(coroutine);
+            return;
+        }
+
+        if (_in != inOrOut && coroutine != null)
         {
             StopCoroutine(coroutine);
             coroutineRunning = false;
         }
         inOrOut = _in;
+
         if (coroutineRunning)
         {
             //Debug.Log("coroutine already running");
             return;
         }
-            
-        coroutine = FadeVolume(_track, _in);
+        
         StartCoroutine(coroutine);
     }
 
-    public void PlayAudio(AudioType _track)
+    public void PlaySFX(AudioType _track)
     {
-        if (_track!=AudioType.MUSIC_EXPLORE && exploreIsPlaying)
-        {
-            StartFade(AudioType.MUSIC_EXPLORE, false);
-        }
-        if (!IsPlaying(_track))
-        {
-            
-            audioEvents[_track].start();
-        }
+        sfxEvents[_track].start();
     }
 
-    public void StopAudio(AudioType _track)
+    public void PlayMusic(AudioType _track)
+    {
+        if (!IsPlaying(_track))
+        {
+            if (_track != AudioType.MUSIC_EXPLORE && exploreIsPlaying)
+            {
+                StartFade(AudioType.MUSIC_EXPLORE, false);
+            }
+
+            if(_track == AudioType.MUSIC_STAIRS)
+            {
+                if (stairsPlayed)
+                {
+                    return;
+                }
+                stairsPlayed = true;
+            }
+
+            if(_track == AudioType.MUSIC_ASCEND)
+            {
+                StopMusic(AudioType.MUSIC_STAIRS);
+                StopMusic(AudioType.MUSIC_EXPLORE);
+            }
+
+            musicEvents[_track].start();
+        }
+        Debug.Log(IsPlaying(AudioType.MUSIC_STAIRS));
+    }
+
+    public void StopMusic(AudioType _track)
     {
         if (IsPlaying(_track))
         {
-            audioEvents[_track].stop(STOP_MODE.ALLOWFADEOUT);
+            musicEvents[_track].stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
 
     private bool IsPlaying(AudioType _track)
     {
         PLAYBACK_STATE playbackState;
-        audioEvents[_track].getPlaybackState(out playbackState);
+        musicEvents[_track].getPlaybackState(out playbackState);
 
         if (playbackState == PLAYBACK_STATE.PLAYING)
         {
-            //Debug.Log("selected audio already playing");
+            Debug.Log("selected audio already playing");
             return true;
         }
         return false;
     }
 
-    private IEnumerator FadeVolume(AudioType _track, bool _in)
+    private IEnumerator FadeMusic(AudioType _track, bool _in)
     {
         if (coroutineRunning)
         {
@@ -207,7 +232,7 @@ public class AudioManager : MonoBehaviour
         coroutineRunning = true;
 
         PLAYBACK_STATE playbackState;
-        audioEvents[_track].getPlaybackState(out playbackState);
+        musicEvents[_track].getPlaybackState(out playbackState);
 
         if (playbackState == PLAYBACK_STATE.STOPPED)
         {
@@ -222,6 +247,7 @@ public class AudioManager : MonoBehaviour
 
         if (_in)
         {
+            exploreIsPlaying = true;
             while(faderLevel<1f)
             {
                 faderLevel += 0.01f / fadeLength;
@@ -235,8 +261,8 @@ public class AudioManager : MonoBehaviour
             {
                 faderLevel -= 0.01f / fadeLength;
                 yield return new WaitForSeconds(0.01f);
-                
             }
+            exploreIsPlaying = false;
         }
 
         coroutineRunning = false;

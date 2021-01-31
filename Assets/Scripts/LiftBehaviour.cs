@@ -64,7 +64,7 @@ public class LiftBehaviour : MonoBehaviour
 
 	private void RaiseLift()
 	{
-		AudioManager.Instance.PlayAudio(AudioType.MUSIC_ASCEND);
+		AudioManager.Instance.PlayMusic(AudioType.MUSIC_ASCEND);
 		step = 1;
 		Player.Instance.transform.SetParent(transform);
 		Player.Instance.charCtrl.enabled = false;

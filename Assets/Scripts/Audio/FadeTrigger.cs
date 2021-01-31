@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicTrigger : MonoBehaviour
+public class FadeTrigger : MonoBehaviour
 {
-    public bool inOrOut;
+    public bool startStop;
     public AudioType audioType;
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +14,7 @@ public class MusicTrigger : MonoBehaviour
 
         if (other.gameObject == Player.Instance.gameObject)
         {
-            if (inOrOut)
+            if (startStop)
             {
                 AudioManager.Instance.StartFade(audioType, true);
             }

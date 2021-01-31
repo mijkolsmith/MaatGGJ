@@ -139,7 +139,7 @@ public class Player : MonoBehaviour
 			{
 				target.GetComponent<InvestResource>().Invest();
 				AudioManager.Instance.interactSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(target.gameObject));
-				AudioManager.Instance.PlayAudio(AudioType.SFX_INTERACT);
+				AudioManager.Instance.PlaySFX(AudioType.SFX_INTERACT);
 			}
 		}
 	}
