@@ -189,6 +189,13 @@ public class AudioManager : MonoBehaviour
                 }
                 stairsPlayed = true;
             }
+
+            if(_track == AudioType.MUSIC_ASCEND)
+            {
+                StopMusic(AudioType.MUSIC_STAIRS);
+                StopMusic(AudioType.MUSIC_EXPLORE);
+            }
+
             musicEvents[_track].start();
         }
         Debug.Log(IsPlaying(AudioType.MUSIC_STAIRS));

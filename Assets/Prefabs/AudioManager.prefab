@@ -47,8 +47,7 @@ MonoBehaviour:
   stairsMusicRef: event:/Stairs Music
   ascendMusicRef: event:/Ascend Music
   unlockMusicRef: event:/Unlock
-  stairsTurningSFXRef: 
-  portalIdleSFXRef: 
-  portalUseSFXRef: 
-  interactSFXRef: 
+  stairsTurningSFXRef: event:/Stairs Moving
+  interactSFXRef: event:/Interact
+  pickupSFXRef: event:/Pickup
   bankLoaded: 0
