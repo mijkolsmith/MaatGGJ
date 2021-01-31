@@ -30,7 +30,7 @@ public class PortalManager : MonoBehaviour
 				}
 				if (numActivated == portals.Length && SceneManager.GetActiveScene().buildIndex == 1)
 				{
-					EventManager.RaiseEvent(EventType.UNLOCKLIFT);
+					EventManager.RaiseEvent(EventType.UNLOCK_LIFT);
 				}
 			}
         }
