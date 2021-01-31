@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="ParameterPreset" id="{04b01d26-e407-4f66-9fe3-e63441fd8365}">
+		<property name="name">
+			<value>VolumeFade</value>
+		</property>
+		<relationship name="folder">
+			<destination>{06c97106-ac0a-4f22-9a2b-0bc25b731d86}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{52d7cb2e-946a-422b-b1c1-123be1ab1772}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{52d7cb2e-946a-422b-b1c1-123be1ab1772}">
+		<property name="initialValue">
+			<value>1</value>
+		</property>
+	</object>
+</objects>
