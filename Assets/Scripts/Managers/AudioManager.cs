@@ -32,6 +32,8 @@ public class AudioManager : MonoBehaviour
 
     bool coroutineRunning = false;
     bool inOrOut;
+    bool musicIsPlaying = false;
+    bool exploreIsPlaying = false;
     IEnumerator coroutine;
 
     FMOD.Studio.PARAMETER_ID fadeParameterId;
@@ -111,18 +113,31 @@ public class AudioManager : MonoBehaviour
     {
         if (bankLoaded)
         {
+            Debug.Log(faderLevel);
+            if (IsPlaying(AudioType.MUSIC_ASCEND) || IsPlaying(AudioType.MUSIC_STAIRS))
+            {
+                musicIsPlaying = true;
+            }
+            else
+            {
+                musicIsPlaying = false;
+            }
+
+            if (IsPlaying(AudioType.MUSIC_EXPLORE) && faderLevel > 0f)
+            {
+                exploreIsPlaying = true;
+            }
+            else
+            {
+                exploreIsPlaying = false;
+            }
             audioEvents[AudioType.MUSIC_EXPLORE].setParameterByID(fadeParameterId, faderLevel);
         }
     }
 
     public void StartFade(AudioType _track, bool _in)
     {
-        if (IsPlaying(AudioType.MUSIC_ASCEND) || IsPlaying(AudioType.MUSIC_STAIRS))
-        {
-            if(_in)
-                return;
-        }
-
+        
         if (!IsPlaying(_track))
         {
             if (_in)
@@ -140,7 +155,7 @@ public class AudioManager : MonoBehaviour
         inOrOut = _in;
         if (coroutineRunning)
         {
-            Debug.Log("coroutine already running");
+            //Debug.Log("coroutine already running");
             return;
         }
             
@@ -150,8 +165,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudio(AudioType _track)
     {
+        if (_track!=AudioType.MUSIC_EXPLORE && exploreIsPlaying)
+        {
+            StartFade(AudioType.MUSIC_EXPLORE, false);
+        }
         if (!IsPlaying(_track))
         {
+            
             audioEvents[_track].start();
         }
     }
@@ -171,7 +191,7 @@ public class AudioManager : MonoBehaviour
 
         if (playbackState == PLAYBACK_STATE.PLAYING)
         {
-            Debug.Log("selected audio already playing");
+            //Debug.Log("selected audio already playing");
             return true;
         }
         return false;
@@ -198,7 +218,7 @@ public class AudioManager : MonoBehaviour
         
         
 
-        float fadeLength = 3.0f;
+        float fadeLength = 2.7f;
 
         if (_in)
         {
@@ -207,6 +227,7 @@ public class AudioManager : MonoBehaviour
                 faderLevel += 0.01f / fadeLength;
                 yield return new WaitForSeconds(0.01f);
             }
+            
         }
         else if (!_in)
         {
@@ -214,6 +235,7 @@ public class AudioManager : MonoBehaviour
             {
                 faderLevel -= 0.01f / fadeLength;
                 yield return new WaitForSeconds(0.01f);
+                
             }
         }
 
