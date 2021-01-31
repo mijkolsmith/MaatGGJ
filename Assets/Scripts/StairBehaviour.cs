@@ -12,7 +12,7 @@ public class StairBehaviour : MonoBehaviour
 
 	Quaternion startRotation;
 
-	private float step = 14.2f;
+	private float step = 14.45f;
 
 	private bool isRotating = false;
 	private bool IsRotating
