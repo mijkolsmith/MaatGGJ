@@ -20,7 +20,7 @@ public class InvestResource : MonoBehaviour
 	void Unlock()
 	{
 		
-		AudioManager.Instance.PlayAudio(AudioType.MUSIC_UNLOCK);
+		if(Cost>0) AudioManager.Instance.PlayMusic(AudioType.MUSIC_UNLOCK);
 		EventManager.RaiseEvent(eventType);
 	}
 }
