@@ -26,11 +26,11 @@ public class PortalManager : MonoBehaviour
                 numActivated++;
                 if (numActivated == portals.Length && SceneManager.GetActiveScene().buildIndex == 0)
                 {
-					EventManager.RaiseEvent(EventType.UNLOCKNEXTLEVEL);
+					EventManager.RaiseEvent(EventType.UNLOCK_NEXT_LEVEL);
 				}
 				if (numActivated == portals.Length && SceneManager.GetActiveScene().buildIndex == 1)
 				{
-					EventManager.RaiseEvent(EventType.UNLOCKLIFT);
+					EventManager.RaiseEvent(EventType.UNLOCK_LIFT);
 				}
 			}
         }
