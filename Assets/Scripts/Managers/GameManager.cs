@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,10 +35,17 @@ public class GameManager : MonoBehaviour
 
 		rm = new ResourceManager();
 		player = Player.Instance;
+
+		//StartCoroutine(SkipLevel1());
 	}
 
-	private void Update()
+	IEnumerator SkipLevel1()
 	{
-		
+		yield return new WaitForSeconds(1.0f);
+		if (SceneManager.GetActiveScene().buildIndex == 0)
+		{
+			EventManager.RaiseEvent(EventType.UNLOCK_NEXT_LEVEL);
+		}
 	}
+	
 }

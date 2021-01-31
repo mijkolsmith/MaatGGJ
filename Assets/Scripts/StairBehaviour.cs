@@ -75,13 +75,13 @@ public class StairBehaviour : MonoBehaviour
 
 	private void GrowStairNorth()
 	{
+		transform.GetChild(1).gameObject.SetActive(true);
 		if (transform.rotation.y >= NorthRotation.y)
 		{
 			startRotation = WestRotation;
 		}
 		north = true;
 		west = false;
-		transform.GetChild(1).gameObject.SetActive(true);
 	}
 
 	private void GrowStairWest()
@@ -94,5 +94,11 @@ public class StairBehaviour : MonoBehaviour
 		west = true;
 		north = false;
 		transform.GetChild(1).gameObject.SetActive(true);
+	}
+
+	private void OnDestroy()
+	{
+		EventManager.RemoveListener(EventType.UNLOCK_STAIR_NORTH, GrowStairNorth);
+		EventManager.RemoveListener(EventType.UNLOCK_STAIR_WEST, GrowStairWest);
 	}
 }
