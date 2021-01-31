@@ -127,7 +127,7 @@ public class AudioManager : MonoBehaviour
         
         if (!IsPlaying(_track))
         {
-            if (_in)
+            if (_in && !IsPlaying(AudioType.MUSIC_ASCEND) && !IsPlaying(AudioType.MUSIC_STAIRS))
             {
                 PlayMusic(_track);
             }
