@@ -19,6 +19,7 @@ public class LiftBehaviour : MonoBehaviour
 	{
 		EventManager.AddListener(EventType.UNLOCK_LIFT, OpenLift);
 		EventManager.AddListener(EventType.UNLOCK_NEXT_LEVEL, RaiseLift);
+		
 	}
 
 	private void Update()
@@ -32,6 +33,10 @@ public class LiftBehaviour : MonoBehaviour
 		{
 			leftDoor.transform.position = Vector3.MoveTowards(leftDoor.transform.position, leftDoorStart.position, step * Time.deltaTime);
 			rightDoor.transform.position = Vector3.MoveTowards(rightDoor.transform.position, rightDoorStart.position, step * Time.deltaTime);
+			if (leftDoor.transform.position == leftDoorStart.position && rightDoor.transform.position == rightDoorStart.position)
+            {
+				EventManager.RaiseEvent(EventType.END_GAME);
+			}
 		}
 		if (raising == true)
 		{

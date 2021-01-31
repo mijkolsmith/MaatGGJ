@@ -208,11 +208,26 @@ public class AudioManager : MonoBehaviour
             musicEvents[_track].stop(STOP_MODE.ALLOWFADEOUT);
         }
     }
+    public void StopSFX(AudioType _track)
+    {
+        if (IsPlaying(_track))
+        {
+            sfxEvents[_track].stop(STOP_MODE.IMMEDIATE);
+        }
+    }
 
     private bool IsPlaying(AudioType _track)
     {
-        PLAYBACK_STATE playbackState;
-        musicEvents[_track].getPlaybackState(out playbackState);
+        PLAYBACK_STATE playbackState = PLAYBACK_STATE.STOPPED;
+        if (musicEvents.ContainsKey(_track))
+        {
+            musicEvents[_track].getPlaybackState(out playbackState);
+        }
+        else if (sfxEvents.ContainsKey(_track))
+        {
+            sfxEvents[_track].getPlaybackState(out playbackState);
+        }
+
 
         if (playbackState == PLAYBACK_STATE.PLAYING)
         {

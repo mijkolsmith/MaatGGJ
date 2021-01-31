@@ -16,21 +16,21 @@ public class StairBehaviour : MonoBehaviour
 
 	private bool isRotating = false;
 	private bool IsRotating
-    {
-        set 
-		{ 
+	{
+		set
+		{
 			if (!isRotating && value)
-            {
-				
+			{
+
 				AudioManager.Instance.PlaySFX(AudioType.SFX_STAIRS_TURN);
-            }
+			}
 
 			isRotating = value;
 		}
-    }
+	}
 
 	private void Start()
-    {
+	{
 		EventManager.AddListener(EventType.UNLOCK_STAIR_NORTH, GrowStairNorth);
 		EventManager.AddListener(EventType.UNLOCK_STAIR_WEST, GrowStairWest);
 	}
@@ -69,12 +69,13 @@ public class StairBehaviour : MonoBehaviour
 				{
 					AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
 				}
+				AudioManager.Instance.StopSFX(AudioType.SFX_STAIRS_TURN);
 			}
 		}
 	}
 
 	private void GrowStairNorth()
-    {
+	{
 		if (transform.rotation.y >= NorthRotation.y)
 		{
 			startRotation = WestRotation;
@@ -82,15 +83,15 @@ public class StairBehaviour : MonoBehaviour
 		north = true;
 		west = false;
 		transform.GetChild(1).gameObject.SetActive(true);
-    }
+	}
 
 	private void GrowStairWest()
 	{
 		if (transform.rotation.y >= WestRotation.y)
-        {
+		{
 			startRotation = NorthRotation;
 		}
-		
+
 		west = true;
 		north = false;
 		transform.GetChild(1).gameObject.SetActive(true);
