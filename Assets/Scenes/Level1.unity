@@ -32729,6 +32729,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6783983138313722511, guid: 02fc59a1d01eff64fb3f86cf6bb28381, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783983138313722511, guid: 02fc59a1d01eff64fb3f86cf6bb28381, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6320754
+      objectReference: {fileID: 0}
+    - target: {fileID: 6783983138313722511, guid: 02fc59a1d01eff64fb3f86cf6bb28381, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6320754
+      objectReference: {fileID: 0}
     - target: {fileID: 6783983139038302256, guid: 02fc59a1d01eff64fb3f86cf6bb28381, type: 3}
       propertyPath: m_Name
       value: Canvas2
