@@ -49,7 +49,7 @@ public class StairBehaviour : MonoBehaviour
 			IsRotating = false;
 			if (startRotation!=NorthRotation)
             {
-				AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
+				AudioManager.Instance.StopSFX(AudioType.SFX_STAIRS_TURN);
             }
 		}
 
@@ -65,7 +65,7 @@ public class StairBehaviour : MonoBehaviour
 			IsRotating = false;
 			if (startRotation != NorthRotation)
 			{
-				AudioManager.Instance.StopMusic(AudioType.SFX_STAIRS_TURN);
+				AudioManager.Instance.StopSFX(AudioType.SFX_STAIRS_TURN);
 			}
 		}
 	}
