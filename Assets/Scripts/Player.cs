@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : PortalTraveller
+public class Player : MonoBehaviour
 {
 	[SerializeField] public CharacterController charCtrl;
 	[SerializeField] private Transform groundCheck;
@@ -83,10 +83,10 @@ public class Player : PortalTraveller
 		}
 
 		//ground check
-		isGrounded = (Physics.CheckBox(new Vector3(groundCheck.position.x - 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z - 1f), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x + 1f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask) &&
-				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z + 1f), new Vector3(groundDistance, 0.2f, groundDistance), Quaternion.identity, groundMask));
+		isGrounded = (Physics.CheckBox(new Vector3(groundCheck.position.x - .5f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.3f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z - .5f), new Vector3(groundDistance, 0.3f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x + .5f, groundCheck.position.y, groundCheck.position.z), new Vector3(groundDistance, 0.3f, groundDistance), Quaternion.identity, groundMask) &&
+				Physics.CheckBox(new Vector3(groundCheck.position.x, groundCheck.position.y, groundCheck.position.z + .5f), new Vector3(groundDistance, 0.3f, groundDistance), Quaternion.identity, groundMask));
 
 		if (isGrounded == false)
 		{
