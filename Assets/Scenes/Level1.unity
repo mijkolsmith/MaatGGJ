@@ -24638,7 +24638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startStop: 1
-  audioType: 0
+  audioType: 1
 --- !u!65 &1664517258
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32857,18 +32857,6 @@ PrefabInstance:
     - target: {fileID: 8316547482169421262, guid: f7d55c55fb6ddcb4cac29f3fc80cebb8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316547482169421263, guid: f7d55c55fb6ddcb4cac29f3fc80cebb8, type: 3}
-      propertyPath: pickupSFXRef
-      value: event:/Pickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316547482169421263, guid: f7d55c55fb6ddcb4cac29f3fc80cebb8, type: 3}
-      propertyPath: interactSFXRef
-      value: event:/Interact
-      objectReference: {fileID: 0}
-    - target: {fileID: 8316547482169421263, guid: f7d55c55fb6ddcb4cac29f3fc80cebb8, type: 3}
-      propertyPath: stairsTurningSFXRef
-      value: event:/Stairs Moving
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7d55c55fb6ddcb4cac29f3fc80cebb8, type: 3}
