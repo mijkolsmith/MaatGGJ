@@ -10,7 +10,7 @@ public class CollectResource : MonoBehaviour
 		{
 			
 			AudioManager.Instance.pickupSFX.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(gameObject));
-			AudioManager.Instance.PlayAudio(AudioType.SFX_PICKUP);
+			AudioManager.Instance.PlaySFX(AudioType.SFX_PICKUP);
 			GameManager.Instance.rm.AddResource(1);
 			Destroy(gameObject);
 		}
