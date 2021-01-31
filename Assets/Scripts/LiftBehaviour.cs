@@ -7,8 +7,11 @@ public class LiftBehaviour : MonoBehaviour
 	[SerializeField] private GameObject rightDoor;
 	[SerializeField] private Transform leftDoorGoal;
 	[SerializeField] private Transform rightDoorGoal;
+	[SerializeField] private Transform leftDoorStart;
+	[SerializeField] private Transform rightDoorStart;
 
 	private bool opening = false;
+	private bool closing = false;
 	private bool raising = false;
 	private float step = 20;
 
@@ -20,10 +23,15 @@ public class LiftBehaviour : MonoBehaviour
 
 	private void Update()
 	{
-		if (opening == true)
+		if (opening == true && closing == false)
 		{
 			leftDoor.transform.position = Vector3.MoveTowards(leftDoor.transform.position, leftDoorGoal.position, step * Time.deltaTime);
 			rightDoor.transform.position = Vector3.MoveTowards(rightDoor.transform.position, rightDoorGoal.position, step * Time.deltaTime);
+		}
+		if (opening == true && closing == true)
+		{
+			leftDoor.transform.position = Vector3.MoveTowards(leftDoor.transform.position, leftDoorStart.position, step * Time.deltaTime);
+			rightDoor.transform.position = Vector3.MoveTowards(rightDoor.transform.position, rightDoorStart.position, step * Time.deltaTime);
 		}
 		if (raising == true)
 		{
@@ -67,5 +75,21 @@ public class LiftBehaviour : MonoBehaviour
 		step = 1;
 		Player.Instance.transform.parent = null;
 		Player.Instance.charCtrl.enabled = true;
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject == Player.Instance.gameObject)
+		{
+			closing = true;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject == Player.Instance.gameObject)
+		{
+			closing = false;
+		}
 	}
 }

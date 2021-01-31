@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PortalManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class PortalManager : MonoBehaviour
     //public Transform destination;
     private int numActivated;
 
-    private bool[] lightsOn;
+	private bool[] lightsOn;
     public bool this[int i]
     {
         set
@@ -23,11 +24,15 @@ public class PortalManager : MonoBehaviour
                 lights[i].GetComponent<Renderer>().material = onMaterial;
 
                 numActivated++;
-                if (numActivated == portals.Length)
+                if (numActivated == portals.Length && SceneManager.GetActiveScene().buildIndex == 0)
                 {
 					EventManager.RaiseEvent(EventType.UNLOCKNEXTLEVEL);
 				}
-            }
+				if (numActivated == portals.Length && SceneManager.GetActiveScene().buildIndex == 1)
+				{
+					EventManager.RaiseEvent(EventType.UNLOCKLIFT);
+				}
+			}
         }
     }
 
@@ -39,7 +44,7 @@ public class PortalManager : MonoBehaviour
 
     private void Update()
     {
-        for(int i = 0; i < portals.Length; i++)
+		for (int i = 0; i < portals.Length; i++)
         {
             if (portals[i].IsUsed())
             {

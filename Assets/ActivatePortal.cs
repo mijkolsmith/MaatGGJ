@@ -23,7 +23,6 @@ public class ActivatePortal : MonoBehaviour
 		if (other.gameObject == Player.Instance.gameObject)
 		{
 			exit = true;
-			//homePortal.gameObject.SetActive(false);
 		}
 	}
 
