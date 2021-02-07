@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{bf22ed88-0f13-48fa-ab37-04b104994554}">
+		<property name="assetPath">
+			<value>interact.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.62693877551020405</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d7ed58d2-d3ce-4d50-a8d6-72e5c2ecc316}</destination>
+		</relationship>
+	</object>
+</objects>
